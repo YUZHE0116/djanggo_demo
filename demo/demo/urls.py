@@ -18,10 +18,7 @@ from django.urls import path,re_path
 from app01.views import helloworld, articcle_year, articcle_month,getdatatime
 
 urlpatterns = [
-    path('',),  # Default route
-    path('hello/', helloworld),
-    path('articcle/year/<int:year>',articcle_year),
-    re_path(r'^articcle/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})$',articcle_month),
+    path('article', include('app01.urls')), 
+    path('account/', include('account.urls')),  # Default route
     path('admin/', admin.site.urls),
-    path('articcle/current/', getdatatime),  # Default route
 ]
