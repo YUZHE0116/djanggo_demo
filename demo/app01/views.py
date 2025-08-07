@@ -1,16 +1,15 @@
 import datetime
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 # Create your views here.
 def helloworld(request):
     return HttpResponse("Hello, World!")
-def articcle_year(request,year):
-    return HttpResponse("Articles from the year {}".format(year))
-def articcle_month(request, year, month):
-    return HttpResponse("Articles from {}/{}".format(year, month))
-def getdatatime(request):
-    today = datetime.date.today()
-    format_today=today.strftime("%Y-%m-%d")
-    html=f"<h1>今天是{format_today}</h1>"
+
+def get_current_datetime(request):
+    today = datetime.datetime.today()
+    format_today = today.strftime("%Y-%m-%d")
+    html= "<h1> 当前时间是 %s</h1>" % format_today
     return HttpResponse(html)
+
+    
