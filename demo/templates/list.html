@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .row1{
+        color: #e81010;
+    }
+    .row2
+    {
+        color: #10e810;
+    }
+    .row3
+    {
+        color: #1010e8;
+    }
+    </style>
+</head>
+<body>
+    <h1>文章列表</h1>
+    <h2>作者:{{authors}}文章数量：{{article_number}}</h2>
+    <ul>
+        <li> {{article_list.0}}</li>
+        <li> {{article_list.1}}</li>
+        <li> {{article_list.2}}</li>
+    </ul>
+    <p>{{info.name}}年龄：{{info.age}}</p>
+    {% for article in article_list%}
+    <ul>
+        <li class="{% cycle 'row1' 'row2' 'row3'%}"> {%if forloop.counter == 1%}
+            第一篇文章
+            {% elif forloop.counter == 2 %}
+            第二篇文章
+            {% else %}
+            其他文章
+            {% endif %}
+            {{article}}
+        </li>
+    </ul>
+    {% empty %}
+    <p>没有文章</p>
+    {%endfor%}
+    {%for key,value in info.items%}
+    <ul>
+        <li>{{key}}:{{value}}</li>
+    </ul>
+    {%endfor%}
+    {%if info.age < 18 %}
+        <p>未成年</p>
+    {%elif info.age >= 18 and info.age < 60 %}
+        <p>成年人</p>
+    {%else%}
+        <p>老年人</p>
+    {%endif%}
+</body>
+</html>
