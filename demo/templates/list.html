@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,9 @@
     }
     </style>
 </head>
-<body>
+<body> -->
+{% extends 'base.html' %}
+{% block content %}
     <h1>文章列表</h1>
     <h2>作者:{{authors}}文章数量：{{article_number}}</h2>
     <ul>
@@ -29,7 +31,8 @@
     <p>{{info.name}}年龄：{{info.age}}</p>
     {% for article in article_list%}
     <ul>
-        <li class="{% cycle 'row1' 'row2' 'row3'%}"> {%if forloop.counter == 1%}
+        <li class="{% cycle 'row1' 'row2' 'row3'%}">
+            {%if forloop.counter == 1 %}
             第一篇文章
             {% elif forloop.counter == 2 %}
             第二篇文章
@@ -41,18 +44,20 @@
     </ul>
     {% empty %}
     <p>没有文章</p>
-    {%endfor%}
+    {% endfor %}
     {%for key,value in info.items%}
     <ul>
         <li>{{key}}:{{value}}</li>
     </ul>
-    {%endfor%}
-    {%if info.age < 18 %}
+    {% endfor %}
+{% if info.age < 18 %}
         <p>未成年</p>
-    {%elif info.age >= 18 and info.age < 60 %}
+{% elif info.age >= 18 and info.age < 60 %}
         <p>成年人</p>
-    {%else%}
+{% else %}
         <p>老年人</p>
-    {%endif%}
-</body>
-</html>
+{% endif %}
+<!-- </body>
+</html> -->
+{% include 'page.html' %}
+{% endblock %}

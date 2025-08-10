@@ -19,7 +19,7 @@ def list(request):
         'Django是一个高级的Python Web框架。',
         'Django的设计'
         ]
-    info = {'name':'zhuyu'
+    info = {'name':'yuzhe'
             ,'age':18
             ,'programming_language':['Python', 'Java', 'C++']
             }
